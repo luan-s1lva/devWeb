@@ -1,17 +1,25 @@
 import { useEffect, useState } from "react";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import {
+  Box,
+  Container,
+  Typography,
+  TextField,
+  Avatar,
+  InputAdornment,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import SearchIcon from "@mui/icons-material/Search";
 
 export default function HomePage() {
   const [carData, setCarData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(""); // Ainda necessário para manter o controle da barra
 
   useEffect(() => {
     fetch("http://localhost:3000/cars")
@@ -22,82 +30,107 @@ export default function HomePage() {
   }, []);
 
   return (
-    <>
-      <Grid container spacing={3} alignItems="center" sx={{ mb: 3 }}>
-        <Grid item size={5}>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{ fontWeight: "bold" }}
+    <Box sx={{ backgroundColor: "#f7f9fc", minHeight: "100vh", pb: 5 }}>
+      <Box
+        sx={{
+          py: 5,
+          mb: 4,
+        }}
+      >
+        <Container maxWidth="md" sx={{ textAlign: "center" }}>
+          <Avatar
+            sx={{
+              mx: "auto",
+              mb: 2,
+              bgcolor: "#fff",
+              color: "#1976d2",
+              width: 64,
+              height: 64,
+            }}
           >
+            <DirectionsCarIcon fontSize="large" />
+          </Avatar>
+          <Typography variant="h4" fontWeight="bold">
             Car Inventory
           </Typography>
-        </Grid>
-        <Grid item size={7}>
+          <Typography variant="subtitle1">
+            Explore nossa coleção de veículos disponíveis
+          </Typography>
+        </Container>
+      </Box>
+
+      <Container maxWidth="md">
+        {/* Campo de busca (somente visual) */}
+        <Box sx={{ mb: 4 }}>
           <TextField
             fullWidth
-            id="standard-basic"
-            label="Procurar carros..."
-            variant="standard"
-            sx={{ fontSize: "1rem" }}
+            variant="outlined"
+            placeholder="Buscar por marca ou modelo..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)} // Mantém o controle do campo, mas não filtra
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon color="action" />
+                </InputAdornment>
+              ),
+            }}
           />
-        </Grid>
-      </Grid>
+        </Box>
 
-      <Grid container spacing={4}>
-        <Grid item xs={12}>
-          <TableContainer
-            component={Paper}
-            sx={{ borderRadius: 2, boxShadow: 3 }}
-          >
-            <Table sx={{ minWidth: 650 }} aria-label="car table">
-              <TableHead>
-                <TableRow>
-                  <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                    Marca
+        {/* Tabela de carros */}
+        <TableContainer
+          component={Paper}
+          sx={{
+            borderRadius: 2,
+            boxShadow: 3,
+            overflowX: "auto",
+          }}
+        >
+          <Table sx={{ minWidth: 650 }} aria-label="car table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Marca
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Modelo
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Ano
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Preço
+                </TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Descrição
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {carData.map((row) => (
+                <TableRow
+                  key={row.id}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                    "&:hover": { backgroundColor: "#f0f0f0" },
+                  }}
+                >
+                  <TableCell component="th" scope="row" align="center">
+                    <Typography fontWeight="medium">{row.brand}</Typography>
                   </TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                    Modelo
+                  <TableCell align="center">{row.model}</TableCell>
+                  <TableCell align="center">{row.year}</TableCell>
+                  <TableCell align="center">
+                    ${row.price.toLocaleString()}
                   </TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                    Ano
-                  </TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                    Preço
-                  </TableCell>
-                  <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                    Descrição
-                  </TableCell>
+                  <TableCell align="center">{row.description}</TableCell>
                 </TableRow>
-              </TableHead>
-              <TableBody>
-                {carData.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 },
-                      "&:hover": { backgroundColor: "#f9f9f9" },
-                    }}
-                  >
-                    <TableCell component="th" scope="row" align="center">
-                      <Typography fontWeight="medium">{row.brand}</Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Typography>{row.model}</Typography>
-                    </TableCell>
-                    <TableCell align="center">{row.year}</TableCell>
-                    <TableCell align="center">
-                      ${row.price.toLocaleString()}
-                    </TableCell>
-                    <TableCell align="center">{row.description}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Grid>
-      </Grid>
-    </>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
+    </Box>
   );
 }
