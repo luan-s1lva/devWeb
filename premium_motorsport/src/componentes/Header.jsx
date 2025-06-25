@@ -8,40 +8,67 @@ import {
   Drawer,
   ListItem,
   ListItemText,
-  Divider,
   List,
+  IconButton,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 export default function Header() {
-  const [openDrawer, setOpen] = React.useState(true);
+  const [openDrawer, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md")); // md = <960px
+
+  const handleDrawerToggle = () => {
+    setOpen(!openDrawer);
+  };
 
   return (
     <>
-      <Drawer anchor="right" open={openDrawer} onClose={() => setOpen(false)}>
-        <Box p={2} width="250px" textAlign="center" role="presentation" >
-          <Typography variant="h6" component='div'>Menu</Typography>
+      <Drawer anchor="right" open={openDrawer} onClose={handleDrawerToggle}>
+        <Box p={2} width="250px" textAlign="center" role="presentation">
+          <Typography variant="h6" component="div">
+            Menu
+          </Typography>
           <List>
             <ListItem divider button>
-              <ListItemText>Home</ListItemText>
+              <ListItemText primary="Home" />
             </ListItem>
             <ListItem divider button>
-              <ListItemText>Admin</ListItemText>
+              <ListItemText primary="Admin" />
             </ListItem>
             <ListItem divider button>
-              <ListItemText>Sobre nós</ListItemText>
+              <ListItemText primary="Sobre nós" />
             </ListItem>
           </List>
         </Box>
       </Drawer>
+
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ backgroundColor: "#2C2C2C" }}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Premium MotoSport
             </Typography>
-            <Button color="inherit">Home</Button>
-            <Button color="inherit">Admin</Button>
-            <Button color="inherit">Sobre Nós</Button>
+
+            {!isSmallScreen && (
+              <>
+                <Button color="inherit">Home</Button>
+                <Button color="inherit">Admin</Button>
+                <Button color="inherit">Sobre Nós</Button>
+              </>
+            )}
+
+            {isSmallScreen && (
+              <IconButton
+                color="inherit"
+                edge="end"
+                onClick={handleDrawerToggle}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
           </Toolbar>
         </AppBar>
       </Box>
