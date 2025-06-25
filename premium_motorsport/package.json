@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "clean": "npx prettier . --write",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -14,6 +15,8 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.1.2",
     "@mui/material": "^7.1.2",
+    "json-server": "^1.0.0-beta.3",
+    "prettier": "^3.6.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.6.2",

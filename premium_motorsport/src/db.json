@@ -1,0 +1,44 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2022,
+      "price": 23000,
+      "description": "Sedan confiável, econômico e com bom espaço interno."
+    },
+    {
+      "id": 2,
+      "brand": "Honda",
+      "model": "Civic",
+      "year": 2021,
+      "price": 25000,
+      "description": "Design esportivo e excelente dirigibilidade."
+    },
+    {
+      "id": 3,
+      "brand": "Ford",
+      "model": "Mustang",
+      "year": 2023,
+      "price": 55000,
+      "description": "Esportivo com motor potente e visual icônico."
+    },
+    {
+      "id": 4,
+      "brand": "Chevrolet",
+      "model": "Onix",
+      "year": 2020,
+      "price": 17000,
+      "description": "Compacto urbano com bom consumo e conectividade."
+    },
+    {
+      "id": 5,
+      "brand": "Volkswagen",
+      "model": "Golf",
+      "year": 2019,
+      "price": 21000,
+      "description": "Hatch premium com desempenho sólido e tecnologia embarcada."
+    }
+  ]
+}
