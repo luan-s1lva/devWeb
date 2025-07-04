@@ -14,13 +14,13 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-//import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function Header() {
   const [openDrawer, setOpen] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md")); // md = <960px
- // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setOpen(!openDrawer);
@@ -83,7 +83,7 @@ export default function Header() {
                 },
               }}
               onClick={() => {
-                navigate("/sobreNos");
+                navigate("/sobre");
                 setOpen(false);
               }}
             >
@@ -102,9 +102,33 @@ export default function Header() {
 
             {!isSmallScreen && (
               <>
-                <Button color="inherit">Home</Button>
-                <Button color="inherit">Admin</Button>
-                <Button color="inherit">Sobre Nós</Button>
+                <Button
+                  color="inherit"
+                  onClick={() => {
+                    navigate("/");
+                    setOpen(false);
+                  }}
+                >
+                  Home
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => {
+                    navigate("/admin");
+                    setOpen(false);
+                  }}
+                >
+                  Admin
+                </Button>
+                <Button
+                  color="inherit"
+                  onClick={() => {
+                    navigate("/sobre");
+                    setOpen(false);
+                  }}
+                >
+                  Sobre Nós
+                </Button>
               </>
             )}
 
