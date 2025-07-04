@@ -1,44 +1,63 @@
 {
   "cars": [
     {
-      "id": 1,
-      "brand": "Toyota",
-      "model": "Corolla",
-      "year": 2022,
-      "price": 23000,
-      "description": "Sedan confiável, econômico e com bom espaço interno."
+      "id": "1",
+      "marca": "Toyota",
+      "modelo": "vovorola",
+      "ano": "1999",
+      "preco": "50000",
+      "descricao": "Sedan de vovô, econômico e com bom espaço interno.",
+      "imagem": "kjdfhlasjvblkjsbvl"
     },
     {
-      "id": 2,
-      "brand": "Honda",
-      "model": "Civic",
-      "year": 2021,
-      "price": 25000,
-      "description": "Design esportivo e excelente dirigibilidade."
+      "id": "2",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "ano": 2021,
+      "preco": 25000,
+      "descricao": "Design esportivo e excelente dirigibilidade."
     },
     {
-      "id": 3,
-      "brand": "Ford",
-      "model": "Mustang",
-      "year": 2023,
-      "price": 55000,
-      "description": "Esportivo com motor potente e visual icônico."
+      "id": "3",
+      "marca": "Ford",
+      "modelo": "Mustang",
+      "ano": 2023,
+      "preco": 55000,
+      "descricao": "Esportivo com motor potente e visual icônico."
     },
     {
-      "id": 4,
-      "brand": "Chevrolet",
-      "model": "Onix",
-      "year": 2020,
-      "price": 17000,
-      "description": "Compacto urbano com bom consumo e conectividade."
+      "id": "4",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "ano": 2020,
+      "preco": 17000,
+      "descricao": "Compacto urbano com bom consumo e conectividade."
     },
     {
-      "id": 5,
-      "brand": "Volkswagen",
-      "model": "Golf",
-      "year": 2019,
-      "price": 21000,
-      "description": "Hatch premium com desempenho sólido e tecnologia embarcada."
+      "id": "5",
+      "marca": "Volkswagen",
+      "modelo": "Golf",
+      "ano": 2019,
+      "preco": 21000,
+      "descricao": "Hatch premium com desempenho sólido e tecnologia embarcada."
+    },
+    {
+      "id": "bd5f",
+      "marca": "byd",
+      "modelo": "dolphin",
+      "ano": "2012",
+      "preco": "10000",
+      "imagem": "lalallal",
+      "descricao": "um carro peba"
+    },
+    {
+      "id": "465a",
+      "marca": "Chevrolet",
+      "modelo": "Opalão",
+      "ano": "2022",
+      "preco": "20000",
+      "imagem": "lalalala",
+      "descricao": "Um clássico da ópera"
     }
   ]
 }
