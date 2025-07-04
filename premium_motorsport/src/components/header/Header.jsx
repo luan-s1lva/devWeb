@@ -14,11 +14,13 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+//import { useNavigate } from "react-router";
 
 export default function Header() {
   const [openDrawer, setOpen] = React.useState(false);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md")); // md = <960px
+ // const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setOpen(!openDrawer);
@@ -27,18 +29,64 @@ export default function Header() {
   return (
     <>
       <Drawer anchor="right" open={openDrawer} onClose={handleDrawerToggle}>
-        <Box p={2} width="250px" textAlign="center" role="presentation">
+        <Box
+          p={2}
+          width="250px"
+          textAlign="center"
+          role="presentation"
+          sx={{
+            backgroundColor: "#000",
+            height: "100%",
+            color: "#fff",
+          }}
+        >
           <Typography variant="h6" component="div">
             Menu
           </Typography>
           <List>
-            <ListItem divider button>
+            <ListItem
+              divider
+              button
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#222",
+                },
+              }}
+              onClick={() => {
+                navigate("/");
+                setOpen(false);
+              }}
+            >
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem divider button>
+            <ListItem
+              divider
+              button
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#222",
+                },
+              }}
+              onClick={() => {
+                navigate("/admin");
+                setOpen(false);
+              }}
+            >
               <ListItemText primary="Admin" />
             </ListItem>
-            <ListItem divider button>
+            <ListItem
+              divider
+              button
+              sx={{
+                "&:hover": {
+                  backgroundColor: "#222",
+                },
+              }}
+              onClick={() => {
+                navigate("/sobreNos");
+                setOpen(false);
+              }}
+            >
               <ListItemText primary="Sobre nós" />
             </ListItem>
           </List>
@@ -46,7 +94,7 @@ export default function Header() {
       </Drawer>
 
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" sx={{ backgroundColor: "#2C2C2C" }}>
+        <AppBar position="static" sx={{ backgroundColor: "black" }}>
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Premium MotoSport

@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import SearchIcon from "@mui/icons-material/Search";
+import "../../index.css";
+import fundo from "../../imgs/bg-img.jpg";
 
 export default function HomePage() {
   const [carData, setCarData] = useState([]);
@@ -30,7 +32,17 @@ export default function HomePage() {
   }, []);
 
   return (
-    <Box sx={{ backgroundColor: "#f7f9fc", minHeight: "100vh", pb: 5 }}>
+    <Box
+      sx={{
+        backgroundImage: `url(${fundo})`,
+
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        minHeight: "100vh",
+        pb: 5,
+      }}
+    >
       <Box
         sx={{
           py: 5,
@@ -38,7 +50,7 @@ export default function HomePage() {
         }}
       >
         <Container maxWidth="md" sx={{ textAlign: "center" }}>
-          <Avatar
+          {/* <Avatar
             sx={{
               mx: "auto",
               mb: 2,
@@ -49,19 +61,27 @@ export default function HomePage() {
             }}
           >
             <DirectionsCarIcon fontSize="large" />
-          </Avatar>
-          <Typography variant="h4" fontWeight="bold">
-            Car Inventory
+          </Avatar>*/}
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            sx={{
+              color: "white",
+              textShadow: "2px 2px 8px rgba(0,0,0,0.8)",
+            }}
+          >
+            Experimente o Luxo
           </Typography>
-          <Typography variant="subtitle1">
-            Explore nossa coleção de veículos disponíveis
+
+          <Typography variant="subtitle1" color="white">
+            Confira nossa coleção de carros luxuosos
           </Typography>
         </Container>
       </Box>
 
       <Container maxWidth="md">
         {/* Campo de busca (somente visual) */}
-        <Box sx={{ mb: 4 }}>
+        <Box sx={{ mb: 4, background: "white", borderRadius: "7px" }}>
           <TextField
             fullWidth
             variant="outlined"
