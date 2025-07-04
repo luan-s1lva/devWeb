@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router";
+import logo from "../../imgs/premium-logo.jpg";
 
 export default function Header() {
   const [openDrawer, setOpen] = React.useState(false);
@@ -40,6 +41,12 @@ export default function Header() {
             color: "#fff",
           }}
         >
+          <Box
+            component="img"
+            src={logo}
+            alt="Logo"
+            sx={{ width: "120px", borderRadius:20}}
+          />
           <Typography variant="h6" component="div">
             Menu
           </Typography>
@@ -96,6 +103,12 @@ export default function Header() {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" sx={{ backgroundColor: "black" }}>
           <Toolbar>
+            <Box
+              component="img"
+              src={logo}
+              alt="Logo"
+              sx={{ height: 50, marginRight: 2, borderRadius: 20 }}
+            />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Premium MotoSport
             </Typography>
