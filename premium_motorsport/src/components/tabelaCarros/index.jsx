@@ -17,7 +17,12 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import "../../index.css";
 
-export default function TabelaCarros({ detectUpdate, showActions }) {
+export default function TabelaCarros({
+  detectUpdate,
+  showActions,
+  detectDeleteButtonOnClick,
+  setIsUpdatable
+}) {
   const [carData, setCarData] = useState([]);
   const [carDataDisplay, setCarDataDisplay] = useState([]);
 
@@ -88,13 +93,13 @@ export default function TabelaCarros({ detectUpdate, showActions }) {
               <TableCell align="center" sx={{ fontWeight: "bold" }}>
                 Descrição
               </TableCell>
-              {showActions ?
-              <TableCell align="center" sx={{ fontWeight: "bold" }}>
-                Ações
-              </TableCell>
-              :
-              <></>
-              }
+              {showActions ? (
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                  Ações
+                </TableCell>
+              ) : (
+                <></>
+              )}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -115,16 +120,27 @@ export default function TabelaCarros({ detectUpdate, showActions }) {
                   ${Number.parseInt(row.preco).toLocaleString()}
                 </TableCell>
                 <TableCell align="center">{row.descricao}</TableCell>
-                {showActions ? 
-                <TableCell align="center">
-                  <button type="button" onClick={() => detectUpdate(row)}>
-                    EDITAR
-                  </button>
-                  <button type="button">DELETAR</button>
-                </TableCell>
-                :
-                <></>
-                }
+                {showActions ? (
+                  <TableCell align="center">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        detectUpdate(row);
+                        setIsUpdatable(true);
+                      }}
+                    >
+                      EDITAR
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => detectDeleteButtonOnClick(row)}
+                    >
+                      DELETAR
+                    </button>
+                  </TableCell>
+                ) : (
+                  <></>
+                )}
               </TableRow>
             ))}
           </TableBody>

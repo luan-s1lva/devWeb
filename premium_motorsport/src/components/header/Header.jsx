@@ -45,7 +45,7 @@ export default function Header() {
             component="img"
             src={logo}
             alt="Logo"
-            sx={{ width: "120px", borderRadius:20}}
+            sx={{ width: "120px", borderRadius: 20 }}
           />
           <Typography variant="h6" component="div">
             Menu

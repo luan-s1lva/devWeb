@@ -3,11 +3,10 @@
     {
       "id": "1",
       "marca": "Toyota",
-      "modelo": "vovorola",
-      "ano": "1999",
+      "modelo": "Corolla",
+      "ano": "2015",
       "preco": "50000",
-      "descricao": "Sedan de vovô, econômico e com bom espaço interno.",
-      "imagem": "kjdfhlasjvblkjsbvl"
+      "descricao": "Sedan de vovô, econômico e com bom espaço interno."
     },
     {
       "id": "2",
@@ -42,39 +41,12 @@
       "descricao": "Hatch premium com desempenho sólido e tecnologia embarcada."
     },
     {
-      "id": "bd5f",
-      "marca": "byd",
-      "modelo": "dolphin",
-      "ano": "2012",
-      "preco": "10000",
-      "imagem": "lalallal",
-      "descricao": "um carro peba"
-    },
-    {
-      "id": "465a",
-      "marca": "Chevrolet",
-      "modelo": "Opalão",
-      "ano": "2022",
-      "preco": "20000",
-      "imagem": "lalalala",
-      "descricao": "Um clássico da ópera"
-    },
-    {
-      "id": "4",
-      "marca": "Chevrolet",
-      "modelo": "Onix",
-      "ano": 2020,
-      "preco": 17000,
-      "descricao": "Compacto urbano com bom consumo e conectividade."
-    },
-    {
-      "id": "",
-      "marca": "Teste",
-      "modelo": "teste2",
-      "ano": "2000",
-      "preco": "134134",
-      "imagem": "rr",
-      "descricao": "testad"
+      "id": "8ce3",
+      "marca": "BYD",
+      "modelo": "DOLPHIN",
+      "ano": "1985",
+      "preco": "100000",
+      "descricao": "CARRO ELÉTRICO"
     }
   ]
 }

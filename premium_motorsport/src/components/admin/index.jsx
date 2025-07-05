@@ -1,24 +1,30 @@
 import { Box, Card, TextField } from "@mui/material";
+import { useNavigate } from "react-router";
 import fundo from "../../imgs/bg-img.jpg";
 import { useState } from "react";
 import TabelaCarros from "../tabelaCarros";
 import Form from "../Form";
 
 export default function AdminPage() {
+  const navigate = useNavigate();
   const [isStoring, setIsStoring] = useState(true);
+  const [isUpdatable, setIsUpdatable] = useState(false);
   const [formData, setFormData] = useState({
     id: "",
     marca: "",
     modelo: "",
     ano: "",
     preco: "",
-    imagem: "",
     descricao: "",
   });
 
   function detectUpdateButtonOnClick(dados) {
-    // console.log(dados)
     setFormData(dados);
+  }
+
+  function detectDeleteButtonOnClick(dados) {
+    handleDelete(dados.id);
+    window.location.reload();
   }
 
   function handleSubmit() {
@@ -29,7 +35,10 @@ export default function AdminPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response) => response.json());
+    }).then((response) => {
+      response.json();
+      navigate("/");
+    });
   }
 
   function handleUpdate() {
@@ -40,6 +49,19 @@ export default function AdminPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
+    }).then((response) => {
+      response.json();
+      window.location.reload();
+    });
+  }
+
+  function handleDelete(id) {
+    fetch("http://localhost:3000/cars/" + id, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
     }).then((response) => response.json());
   }
 
@@ -49,6 +71,28 @@ export default function AdminPage() {
     setFormData({ ...formData, [event.target.name]: value });
   }
 
+  function handleChangeToStore() {
+    setIsStoring(true);
+    setFormData({
+      marca: "",
+      modelo: "",
+      ano: "",
+      preco: "",
+      descricao: "",
+    });
+  }
+
+  function handleChangeToUpdate() {
+    setIsStoring(false);
+    setFormData({
+      id: "",
+      marca: "",
+      modelo: "",
+      ano: "",
+      preco: "",
+      descricao: "",
+    });
+  }
   return (
     <>
       <Box
@@ -61,10 +105,10 @@ export default function AdminPage() {
           pb: 5,
         }}
       >
-        <button type="button" onClick={() => setIsStoring(true)}>
+        <button type="button" onClick={handleChangeToStore}>
           Store
         </button>
-        <button type="button" onClick={() => setIsStoring(false)}>
+        <button type="button" onClick={() => {handleChangeToUpdate(); setIsUpdatable(false)}}>
           Update
         </button>
         {isStoring ? (
@@ -75,6 +119,8 @@ export default function AdminPage() {
               formData={formData}
               handleSubmit={handleSubmit}
               handleUpdate={handleUpdate}
+              handleDelete={handleDelete}
+              isUpdatable={true}
             />
           </>
         ) : (
@@ -85,8 +131,14 @@ export default function AdminPage() {
               formData={formData}
               handleSubmit={handleSubmit}
               handleUpdate={handleUpdate}
+              isUpdatable={isUpdatable}
             />
-            <TabelaCarros detectUpdate={detectUpdateButtonOnClick} showActions={true}/>
+            <TabelaCarros
+              detectUpdate={detectUpdateButtonOnClick}
+              detectDeleteButtonOnClick={detectDeleteButtonOnClick}
+              showActions={true}
+              setIsUpdatable={setIsUpdatable}
+            />
           </>
         )}
       </Box>
