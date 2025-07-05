@@ -58,6 +58,23 @@
       "preco": "20000",
       "imagem": "lalalala",
       "descricao": "Um clássico da ópera"
+    },
+    {
+      "id": "4",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "ano": 2020,
+      "preco": 17000,
+      "descricao": "Compacto urbano com bom consumo e conectividade."
+    },
+    {
+      "id": "",
+      "marca": "Teste",
+      "modelo": "teste2",
+      "ano": "2000",
+      "preco": "134134",
+      "imagem": "rr",
+      "descricao": "testad"
     }
   ]
 }
