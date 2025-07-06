@@ -50,7 +50,7 @@ export default function HomePage() {
           </Typography>
         </Container>
       </Box>
-      <Container maxWidth="md">
+      <Container>
         <TabelaCarros />
       </Container>
     </Box>

@@ -13,15 +13,18 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Button,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import "../../index.css";
 
 export default function TabelaCarros({
   detectUpdate,
   showActions,
   detectDeleteButtonOnClick,
-  setIsUpdatable
+  setIsUpdatable,
 }) {
   const [carData, setCarData] = useState([]);
   const [carDataDisplay, setCarDataDisplay] = useState([]);
@@ -36,27 +39,37 @@ export default function TabelaCarros({
   }, []);
 
   function handleFiltering(value) {
-    carData.filter((item) => {
-      if (
-        item.marca.toLowerCase().includes(value) ||
-        item.modelo.toLowerCase().includes(value)
-      ) {
-        setCarDataDisplay([item]);
-      }
+    if (value === "") {
+      setCarDataDisplay(carData);
+      return;
+    }
 
-      if (value == "") {
-        setCarDataDisplay(carData);
-      }
+    const filtered = carData.filter((item) => {
+      return (
+        item.marca.toLowerCase().includes(value.toLowerCase()) ||
+        item.modelo.toLowerCase().includes(value.toLowerCase())
+      );
     });
+
+    setCarDataDisplay(filtered);
   }
 
   return (
     <>
-      <Box sx={{ mb: 4, background: "white", borderRadius: "7px" }}>
+      <Box
+        sx={{
+          mt: 4,
+          mb: 4,
+          background: "white",
+          borderRadius: "7px",
+          width: "80%",
+          mx: "auto",
+        }}
+      >
         <TextField
           fullWidth
           variant="outlined"
-          placeholder="Buscar por marca ou modelo..."
+          placeholder="Buscar por marca ou modelo"
           onChange={(e) => handleFiltering(e.target.value)}
           InputProps={{
             startAdornment: (
@@ -73,9 +86,11 @@ export default function TabelaCarros({
           borderRadius: 2,
           boxShadow: 3,
           overflowX: "auto",
+          width: "80%",
+          margin: "auto",
         }}
       >
-        <Table sx={{ minWidth: 650 }} aria-label="car table">
+        <Table sx={{}} aria-label="car table">
           <TableHead>
             <TableRow>
               <TableCell align="center" sx={{ fontWeight: "bold" }}>
@@ -122,21 +137,20 @@ export default function TabelaCarros({
                 <TableCell align="center">{row.descricao}</TableCell>
                 {showActions ? (
                   <TableCell align="center">
-                    <button
-                      type="button"
+                    <Button
                       onClick={() => {
                         detectUpdate(row);
                         setIsUpdatable(true);
                       }}
                     >
-                      EDITAR
-                    </button>
-                    <button
-                      type="button"
+                      <EditIcon />
+                    </Button>
+                    <Button
+                      color="error"
                       onClick={() => detectDeleteButtonOnClick(row)}
                     >
-                      DELETAR
-                    </button>
+                      <DeleteIcon />
+                    </Button>
                   </TableCell>
                 ) : (
                   <></>

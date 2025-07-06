@@ -1,7 +1,7 @@
-import { Box, Card, TextField } from "@mui/material";
+import { Box, ToggleButton, ToggleButtonGroup } from "@mui/material";
 import { useNavigate } from "react-router";
 import fundo from "../../imgs/bg-img.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TabelaCarros from "../tabelaCarros";
 import Form from "../Form";
 
@@ -55,6 +55,26 @@ export default function AdminPage() {
     });
   }
 
+  useEffect(() => {
+    if (isStoring) {
+      setFormData({
+        marca: "",
+        modelo: "",
+        ano: "",
+        preco: "",
+        descricao: "",
+      });
+    } else {
+      setFormData({
+        id: "",
+        marca: "",
+        modelo: "",
+        ano: "",
+        preco: "",
+        descricao: "",
+      });
+    }
+  }, []);
   function handleDelete(id) {
     fetch("http://localhost:3000/cars/" + id, {
       method: "DELETE",
@@ -105,12 +125,34 @@ export default function AdminPage() {
           pb: 5,
         }}
       >
-        <button type="button" onClick={handleChangeToStore}>
-          Store
-        </button>
-        <button type="button" onClick={() => {handleChangeToUpdate(); setIsUpdatable(false)}}>
-          Update
-        </button>
+        <Box sx={{ display: "flex", justifyContent: "center", py: 2 }}>
+          <ToggleButtonGroup
+            value={isStoring ? "store" : "update"}
+            exclusive
+            onChange={(e, value) => {
+              if (value === "store") {
+                handleChangeToStore();
+                setIsUpdatable(false);
+              } else if (value === "update") {
+                handleChangeToUpdate();
+                setIsUpdatable(false);
+              }
+            }}
+            sx={{
+              borderRadius: "50px",
+              overflow: "hidden",
+              boxShadow: 2,
+              bgcolor: "white",
+            }}
+          >
+            <ToggleButton value="store" sx={{ px: 4, fontWeight: "bold" }}>
+              Cadastro
+            </ToggleButton>
+            <ToggleButton value="update" sx={{ px: 4, fontWeight: "bold" }}>
+              Edição
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
         {isStoring ? (
           <>
             <Form

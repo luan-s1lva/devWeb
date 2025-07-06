@@ -46,7 +46,7 @@ export default function Form({
                 <FormControl>
                   <TextField
                     name="marca"
-                    id="filled-basic"
+                    id="marca"
                     required
                     label="Marca"
                     variant="filled"
@@ -62,7 +62,7 @@ export default function Form({
                 <FormControl>
                   <TextField
                     name="modelo"
-                    id="filled-basic"
+                    id="modelo"
                     required
                     label="Modelo"
                     variant="filled"
@@ -78,7 +78,7 @@ export default function Form({
                 <FormControl>
                   <TextField
                     name="ano"
-                    id="filled-basic"
+                    id="ano"
                     required
                     type="number"
                     label="Ano"
@@ -95,7 +95,7 @@ export default function Form({
                 <FormControl>
                   <TextField
                     name="preco"
-                    id="filled-basic"
+                    id="preco"
                     required
                     type="number"
                     label="Preço"
@@ -112,7 +112,7 @@ export default function Form({
                 <FormControl>
                   <TextField
                     name="descricao"
-                    id="filled-basic"
+                    id="descricao"
                     required
                     multiline
                     rows={5}
@@ -128,11 +128,11 @@ export default function Form({
             <Grid sx={{ mx: "auto" }}>
               {toStore === true ? (
                 <Button variant="contained" onClick={handleSubmit}>
-                  STORE
+                  Cadastrar
                 </Button>
               ) : (
                 <Button variant="contained" onClick={handleUpdate}>
-                  UPDATE
+                  Editar
                 </Button>
               )}
             </Grid>
