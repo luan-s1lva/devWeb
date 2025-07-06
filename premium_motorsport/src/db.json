@@ -46,7 +46,55 @@
       "modelo": "DOLPHIN",
       "ano": "1985",
       "preco": "100000",
-      "descricao": "CARRO ELÉTRICO"
+      "descricao": "Carro Elétrico"
+    },
+    {
+      "id": "9",
+      "marca": "Mercedes-Benz",
+      "modelo": "S-Class",
+      "ano": 2023,
+      "preco": 120000,
+      "descricao": "Luxo supremo com tecnologia de ponta e conforto inigualável."
+    },
+    {
+      "id": "10",
+      "marca": "BMW",
+      "modelo": "7 Series",
+      "ano": 2022,
+      "preco": 110000,
+      "descricao": "Sedan executivo com desempenho dinâmico e interiores refinados."
+    },
+    {
+      "id": "11",
+      "marca": "Audi",
+      "modelo": "A8",
+      "ano": 2023,
+      "preco": 115000,
+      "descricao": "Tecnologia avançada e design sofisticado para máximo conforto."
+    },
+    {
+      "id": "12",
+      "marca": "Lexus",
+      "modelo": "LS",
+      "ano": 2023,
+      "preco": 105000,
+      "descricao": "Combinação perfeita de luxo, desempenho e confiabilidade."
+    },
+    {
+      "id": "13",
+      "marca": "Porsche",
+      "modelo": "Panamera",
+      "ano": 2023,
+      "preco": 130000,
+      "descricao": "Esportivo de luxo com alta performance e design exclusivo."
+    },
+    {
+      "id": "4c79",
+      "marca": "Toyota",
+      "modelo": "Corolla",
+      "ano": "2021",
+      "preco": "125000",
+      "descricao": "Toyota 2021"
     }
   ]
 }
